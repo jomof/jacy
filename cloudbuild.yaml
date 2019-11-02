@@ -10,6 +10,7 @@ steps:
     export TAG_NAME=$TAG_NAME
     export SHORT_SHA=$SHORT_SHA
     ./docker-build.sh jacy-dat
+    
  artifacts:
   objects:
     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest
