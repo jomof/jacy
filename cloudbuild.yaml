@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    chmod +x ./docker-build.sh
+    export PROJECT_ID=$PROJECT_ID
+    export BUILD_ID=$BUILD_ID
+    export TAG_NAME=$TAG_NAME
+    export SHORT_SHA=$SHORT_SHA
+    ./docker-build.sh jacy-dat
+    
+ 
