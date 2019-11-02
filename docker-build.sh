@@ -17,4 +17,4 @@ docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
 
 mkdir /data
-docker cp $DOCKER_BASE:latest:/data /data
+docker cp $DOCKER_BASE:/data /data
