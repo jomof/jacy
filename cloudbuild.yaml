@@ -13,9 +13,9 @@ steps:
     apt-get update 
     apt-get install -y gcc wget
     wget http://sweaglesw.org/linguistics/ace/download/ace-0.9.30-x86-64.tar.gz
-    RUN tar xvzf /data/ace-0.9.30-x86-64.tar.gz > nul
-    RUN apt-get install -y locales
-    RUN locale-gen en_US.UTF-8 
+    tar xvzf /data/ace-0.9.30-x86-64.tar.gz > nul
+    apt-get install -y locales
+    locale-gen en_US.UTF-8 
     LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G jacy.dat
 
     #./docker-build.sh jacy-dat
