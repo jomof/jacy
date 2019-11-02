@@ -1,0 +1,16 @@
+# Build a baseline Ubuntu distro that supports UTF-8
+FROM ubuntu:18.04 as baseline
+WORKDIR /data
+RUN apt-get clean && apt-get update 
+RUN apt-get install -y gcc wget
+RUN wget http://sweaglesw.org/linguistics/ace/download/ace-0.9.30-x86-64.tar.gz
+WORKDIR /app
+RUN tar xvzf /data/ace-0.9.30-x86-64.tar.gz > nul
+
+
+# Build jacy.dat and mecab
+FROM baseline as jacy-dat
+WORKDIR /app
+ADD . .
+RUN LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g jacy-2017-09-08/ace/config.tdl -G jacy.dat
+
