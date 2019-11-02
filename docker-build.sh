@@ -11,7 +11,10 @@ docker build \
 -t $DOCKER_BASE:$SHORT_SHA \
 .
 
-docker push $DOCKER_BASE:latest
+docker push $DOCKER_BASE
 docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
+
+md /data
+docker cp $DOCKER_BASE:latest:/data /data
