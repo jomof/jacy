@@ -16,14 +16,11 @@ docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
 
-echo ls data
-ls data/
-# mkdir data/
-# id=$(docker create $DOCKER_BASE)
-# docker cp $id:/data/ace-0.9.30-x86-64.tar.gz data/
-# docker cp $id:/data/jacy.dat data/
-# docker rm -v $id
-
-# gsutil cp -r data/* gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest
+mkdir upload/
+id=$(docker create $DOCKER_BASE)
+docker cp $id:/data/ace-0.9.30-x86-64.tar.gz upload/
+docker cp $id:/data/jacy.dat upload/
+docker rm -v $id
+gsutil cp -r data/* gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest
 
 
