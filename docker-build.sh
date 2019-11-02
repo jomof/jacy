@@ -16,9 +16,11 @@ docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
 
+echo Copying output files to artifacts-to-upload/
 mkdir artifacts-to-upload/
 id=$(docker create $DOCKER_BASE)
 docker cp $id:/data artifacts-to-upload/
+ls artifacts-to-upload/
 docker rm -v $id
 
 
