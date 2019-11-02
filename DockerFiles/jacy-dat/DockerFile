@@ -1,5 +1,5 @@
 # Build a baseline Ubuntu distro that supports UTF-8
-FROM ubuntu:18.04 as jacy-dat
+FROM gcr.io/cloud-builders/docker as build-jacy-dat
     WORKDIR /data
     RUN apt-get clean
     RUN apt-get update 

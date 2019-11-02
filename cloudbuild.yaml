@@ -9,15 +9,13 @@ steps:
     export BUILD_ID=$BUILD_ID
     export TAG_NAME=$TAG_NAME
     export SHORT_SHA=$SHORT_SHA
-    apt-get clean
-    apt-get update 
-    apt-get install -y gcc wget
-    wget http://sweaglesw.org/linguistics/ace/download/ace-0.9.30-x86-64.tar.gz
-    tar xvzf ace-0.9.30-x86-64.tar.gz > nul
-    apt-get install -y locales
-    locale-gen en_US.UTF-8 
-    LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G jacy.dat
-
+    ./docker-build.sh jacy-dat
+- name: 'gcr.io/$PROJECT_ID/jacy-dat'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo NOP
     #./docker-build.sh jacy-dat
     #mkdir upload/
     #id=$(docker create gcr.io/$PROJECT_ID/jacy-dat)
