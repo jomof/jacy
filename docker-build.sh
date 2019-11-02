@@ -16,9 +16,9 @@ docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
 
-mkdir /data
+mkdir data/
 id=$(docker create $DOCKER_BASE)
-docker cp $id:/data /data
+docker cp $id:/data data
 docker rm -v $id
 
 
