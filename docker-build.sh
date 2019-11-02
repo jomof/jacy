@@ -16,9 +16,9 @@ docker push $DOCKER_BASE:latest
 docker push $DOCKER_BASE:$BUILD_ID
 docker push $DOCKER_BASE:$SHORT_SHA
 
-echo Copying output files to artifacts-to-upload/
 mkdir artifacts-to-upload/
 id=$(docker create $DOCKER_BASE)
+docker cp $id:/data/* artifacts-to-upload/
 docker cp $id:/data/ace-0.9.30-x86-64.tar.gz artifacts-to-upload/
 docker cp $id:/data/jacy.dat artifacts-to-upload/
 ls artifacts-to-upload/
