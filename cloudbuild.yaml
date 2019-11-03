@@ -11,6 +11,7 @@ steps:
     export SHORT_SHA=$SHORT_SHA
     ./docker-build.sh jacy-dat
 - name: 'gcr.io/$PROJECT_ID/jacy-dat'
+  entrypoint: 'bash'
 
 artifacts:
   objects:
