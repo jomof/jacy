@@ -9,7 +9,7 @@ steps:
     apt-get install -y gcc wget locales
     locale-gen en_US.UTF-8 
     wget http://sweaglesw.org/linguistics/ace/download/ace-0.9.30-x86-64.tar.gz
-    tar xvzf /data/ace-0.9.30-x86-64.tar.gz > nul
+    tar xvzf ace-0.9.30-x86-64.tar.gz > nul
     LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G jacy.dat
 
 artifacts:
