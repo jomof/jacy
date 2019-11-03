@@ -8,17 +8,17 @@ steps:
     apt-get update
     apt-get install -y gcc wget locales
     locale-gen en_US.UTF-8 
-    mkdir /upload
-    pushd /upload
+    mkdir upload
+    cd upload
     wget http://sweaglesw.org/linguistics/ace/download/ace-0.9.30-x86-64.tar.gz
-    popd
-    tar xvzf /upload/ace-0.9.30-x86-64.tar.gz > nul
-    LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G /upload/jacy.dat
+    cd ..
+    tar xvzf upload/ace-0.9.30-x86-64.tar.gz > nul
+    LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G upload/jacy.dat
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '/upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest/']
+  args: ['cp', 'upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest/']
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '/upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/commit-$SHORT_SHA/']
+  args: ['cp', 'upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/commit-$SHORT_SHA/']
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '/upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/build-$BUILD_ID/']
+  args: ['cp', 'upload/*', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/build-$BUILD_ID/']
 
  
