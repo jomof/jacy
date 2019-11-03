@@ -14,12 +14,15 @@ steps:
 
 artifacts:
   objects:
-    location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-last
+    location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-latest
     paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
 artifacts:
   objects:
     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-$SHORT_SHA
     paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
-
+artifacts:
+  objects:
+    location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-$BUILD_ID
+    paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
 
  
