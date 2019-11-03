@@ -12,17 +12,10 @@ steps:
     tar xvzf ace-0.9.30-x86-64.tar.gz > nul
     LC_ALL=en_US.UTF-8 ./ace-0.9.30/ace -g ace/config.tdl -G jacy.dat
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'jacy.dat', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat-latest']
-
-# artifacts:
-#   objects:
-#     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-latest
-#     paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
-#   objects:
-#     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-commit-$SHORT_SHA
-#     paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
-#   objects:
-#     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat-build-$BUILD_ID
-#     paths: ['jacy.dat', 'ace-0.9.30-x86-64.tar.gz']  
+  args: ['cp', 'jacy.dat', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/latest/']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'jacy.dat', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/commit-$SHORT_SHA/']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'jacy.dat', 'gs://my-web-apis_cloudbuild/artifacts/jacy-dat/build-$BUILD_ID']
 
  
