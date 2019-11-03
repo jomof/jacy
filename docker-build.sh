@@ -11,10 +11,10 @@ docker build \
 -t $DOCKER_BASE:$SHORT_SHA \
 .
 
-docker push $DOCKER_BASE
-docker push $DOCKER_BASE:latest
-docker push $DOCKER_BASE:$BUILD_ID
-docker push $DOCKER_BASE:$SHORT_SHA
+docker push $DOCKER_BASE > nul
+docker push $DOCKER_BASE:latest > nul
+docker push $DOCKER_BASE:$BUILD_ID > nul
+docker push $DOCKER_BASE:$SHORT_SHA > nul
 
 # mkdir upload/
 # id=$(docker create $DOCKER_BASE)

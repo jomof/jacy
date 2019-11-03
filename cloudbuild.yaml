@@ -11,23 +11,10 @@ steps:
     export SHORT_SHA=$SHORT_SHA
     ./docker-build.sh jacy-dat
 - name: 'gcr.io/$PROJECT_ID/jacy-dat'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    echo NOP
-    #./docker-build.sh jacy-dat
-    #mkdir upload/
-    #id=$(docker create gcr.io/$PROJECT_ID/jacy-dat)
-    #docker cp $id:/data/ace-0.9.30-x86-64.tar.gz upload/latest
-    #docker cp $id:/data/ace-0.9.30-x86-64.tar.gz upload/$SHORT_SHA
-    #docker cp $id:/data/jacy.dat upload/latest
-    #docker cp $id:/data/jacy.dat upload/$SHORT_SHA
-    #docker rm -v $id
 
 artifacts:
   objects:
     location: gs://my-web-apis_cloudbuild/artifacts/jacy-dat
-    paths: ['jacy.data']  
+    paths: ['/data']  
 
  
